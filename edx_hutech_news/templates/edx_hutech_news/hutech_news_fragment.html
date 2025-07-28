@@ -1,0 +1,26 @@
+<div class="hutech-news-widget">
+    <h3 class="hutech-news-title">Tin tức HUTECH</h3>
+    <div class="hutech-news-items">
+        {% for news in news_items %}
+        <div class="hutech-news-item">
+            {% if news.image_url %}
+            <div class="hutech-news-image">
+                <img src="{{ news.image_url }}" alt="{{ news.title }}" />
+            </div>
+            {% endif %}
+            <div class="hutech-news-content">
+                <h4><a href="{{ news.url }}" target="_blank">{{ news.title }}</a></h4>
+                <p class="hutech-news-date">{{ news.published_date|date:"d/m/Y" }}</p>
+                {% if news.summary %}
+                <p class="hutech-news-summary">{{ news.summary|truncatechars:100 }}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p>Không có tin tức mới từ HUTECH.</p>
+        {% endfor %}
+    </div>
+    <div class="hutech-news-footer">
+        <a href="{% url 'hutech_news:hutech_news' %}" class="hutech-news-more">Xem tất cả tin tức</a>
+    </div>
+</div>

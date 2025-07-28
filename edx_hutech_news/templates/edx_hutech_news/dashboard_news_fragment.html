@@ -1,0 +1,14 @@
+<section class="hutech-news-dashboard-section">
+    <h2 class="section-title">Tin tức HUTECH</h2>
+    <div class="hutech-news-dashboard">
+        {% for news in news_items %}
+        <div class="hutech-news-item-compact">
+            <h3><a href="{{ news.url }}" target="_blank">{{ news.title }}</a></h3>
+            <p class="date">{{ news.published_date|date:"d/m/Y" }}</p>
+        </div>
+        {% empty %}
+        <p>Không có tin tức mới.</p>
+        {% endfor %}
+        <a href="{% url 'hutech_news:hutech_news' %}" class="view-all-news">Xem tất cả tin tức</a>
+    </div>
+</section>
